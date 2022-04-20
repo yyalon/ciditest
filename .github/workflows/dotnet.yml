@@ -18,7 +18,7 @@ jobs:
       with:
         dotnet-version: 3.1.x
     - name: Move dir
-      run: ls
+      run: cd WebApi
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
