@@ -17,13 +17,11 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 3.1.x
-    - name: Move dir
-      run: cd WebApi
     - name: Ls dir
       run: ls
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore WebApi/WebApi.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build WebApi/WebApi.sln --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
