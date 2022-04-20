@@ -20,6 +20,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore WebApi/WebApi.sln
     - name: Build
-      run: dotnet build WebApi/WebApi.sln --no-restore
+      run: dotnet build WebApi/WebApi.sln --no-restore --output Release/
     - name: Ls dir
       run: ls
