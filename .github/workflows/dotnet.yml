@@ -9,17 +9,20 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 3.1.x
     - name: Restore dependencies
       run: dotnet restore WebApi/WebApi.sln
     - name: Build
-      run: dotnet build WebApi/WebApi.sln --no-restore
+      run: dotnet build WebApi/WebApi.sln --no-restore --output Release/
     - name: Ls dir
       run: ls
+    - name: Deploy to IIS
+      run: |
+        iisreset /stop
+        Copy-Item Release/* C:/gitactiontest -Recurse -Force
+        iisreset /start
+    - name: Curl the website as a smoke test
+      run: curl http://localhost:8110/
