@@ -24,5 +24,3 @@ jobs:
         iisreset /stop
         Copy-Item Release/* C:/gitactiontest -Recurse -Force
         iisreset /start
-    - name: Curl the website as a smoke test
-      run: curl http://localhost:8110/
