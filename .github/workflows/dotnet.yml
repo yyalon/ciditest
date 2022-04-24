@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: test_dev_hosted
+    runs-on: cicd_runner
 
     steps:
     - uses: actions/checkout@v3
